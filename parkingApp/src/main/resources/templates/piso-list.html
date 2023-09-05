@@ -17,6 +17,7 @@
             <p th:text="|${piso.tipoVehiculoP} ${piso.espaciosDisponibles}|"></p>
             <a th:href="@{/parkingApp/piso/view/{idPiso}(idPiso=${piso.id})}">View</a>
             <a th:href="@{/parkingApp/piso/delete/{idPiso}(idPiso=${piso.id})}">Delete</a>
+            <a th:href="@{/parkingApp/piso/edit/{idPiso}(idPiso=${piso.id})}">Edit</a>
         </li>   
     </ul>
     
