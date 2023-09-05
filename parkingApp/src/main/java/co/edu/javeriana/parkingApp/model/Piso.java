@@ -32,10 +32,9 @@ public class Piso {
     @OneToOne(mappedBy = "piso")
     private List<TipoVehiculo> tipoVehiculos;
     
-    public Piso(Edificio edificio, int totalVehiculos, int espaciosDisponibles) {
+    public Piso(Edificio edificio, TipoVehiculo tipoVehiculo) {
         this.edificio = edificio;
-        this.totalVehiculos = totalVehiculos;
-        this.espaciosDisponibles = espaciosDisponibles;
+        this.tipoVehiculo = tipoVehiculo;
     }
 
     public Piso() {
@@ -57,20 +56,20 @@ public class Piso {
         this.edificio = edificio;
     }
 
-    public int getTotalVehiculos() {
-        return totalVehiculos;
+    public int getTipoVehiculo() {
+        return tipoVehiculo;
     }
 
-    public void setTotalVehiculos(int totalVehiculos) {
-        this.totalVehiculos = totalVehiculos;
+    public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
     }
 
     public int getEspaciosDisponibles() {
         return espaciosDisponibles;
     }
 
-    public void setEspaciosDisponibles(int espaciosDisponibles) {
-        this.espaciosDisponibles = espaciosDisponibles;
+    public int getTotalVehiculos() {
+        return totalVehiculos;
     }
 
 }
