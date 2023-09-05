@@ -40,14 +40,14 @@ public class DBInitializer implements CommandLineRunner {
 
 
 
-        Vehiculo v1 = vehiculoRepository.save(new Vehiculo(p1,'C',1600));
-        Vehiculo v2 = vehiculoRepository.save(new Vehiculo(p1,'C',0000));
-        Vehiculo v3 = vehiculoRepository.save(new Vehiculo(p1,'C',1200));
-        Vehiculo v4 = vehiculoRepository.save(new Vehiculo(p2,'M',900));
-        Vehiculo v5 = vehiculoRepository.save(new Vehiculo(p2,'M',2330));
-        Vehiculo v6 = vehiculoRepository.save(new Vehiculo(p2,'M',1800));
-        Vehiculo v7 = vehiculoRepository.save(new Vehiculo(p2,'M',1700));
-        Vehiculo v8 = vehiculoRepository.save(new Vehiculo(p3,'C',1600));
+        Vehiculo v1 = vehiculoRepository.save(new Vehiculo(p1,"NC099",1600));
+        Vehiculo v2 = vehiculoRepository.save(new Vehiculo(p1,"JKE345",0000));
+        Vehiculo v3 = vehiculoRepository.save(new Vehiculo(p1,"DHR324",1200));
+        Vehiculo v4 = vehiculoRepository.save(new Vehiculo(p2,"UDJ145",900));
+        Vehiculo v5 = vehiculoRepository.save(new Vehiculo(p2,"OPK354",2330));
+        Vehiculo v6 = vehiculoRepository.save(new Vehiculo(p2,"LRH715",1800));
+        Vehiculo v7 = vehiculoRepository.save(new Vehiculo(p2,"MOF983",1700));
+        Vehiculo v8 = vehiculoRepository.save(new Vehiculo(p3,"AID123",1600));
 
 
 
