@@ -20,17 +20,13 @@ public class Vehiculo {
     @JoinColumn(name="piso_n")
     private Piso piso;
 
-    @Column(name = "tipo_vehiculo", nullable = false)
-    private char tipoVehiculo;
-
     @Column(name = "hora_llegada", nullable = false)
     private int horaLlegada;
 
     
-    
-    public Vehiculo(Piso piso, char tipoVehiculo, int horaLlegada) {
+    public Vehiculo(Piso piso, String placa, int horaLlegada) {
         this.piso = piso;
-        this.tipoVehiculo = tipoVehiculo;
+        this.placa = placa;
         this.horaLlegada = horaLlegada;
     }
 
@@ -53,12 +49,12 @@ public class Vehiculo {
         this.piso = piso;
     }
 
-    public char getTipoVehiculo() {
-        return tipoVehiculo;
+    public String getPlaca() {
+        return placa;
     }
 
-    public void setTipoVehiculo(char tipoVehiculo) {
-        this.tipoVehiculo = tipoVehiculo;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
     public int getHoraLlegada() {
