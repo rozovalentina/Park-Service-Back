@@ -11,9 +11,12 @@ import org.springframework.stereotype.Component;
 import co.edu.javeriana.parkingApp.model.Edificio;
 import co.edu.javeriana.parkingApp.model.Piso;
 import co.edu.javeriana.parkingApp.model.Vehiculo;
+import co.edu.javeriana.parkingApp.model.TipoVehiculo;
 import co.edu.javeriana.parkingApp.repository.EdificioRepository;
 import co.edu.javeriana.parkingApp.repository.PisoRepository;
 import co.edu.javeriana.parkingApp.repository.VehiculoRepository;
+import co.edu.javeriana.parkingApp.repository.TipoVehiculoRepository;
+
 
 @Component
 public class DBInitializer implements CommandLineRunner {
@@ -29,16 +32,20 @@ public class DBInitializer implements CommandLineRunner {
     @Autowired
     private VehiculoRepository vehiculoRepository;
 
+    @autowired
+    private TipoVehiculoRepository tipoVehiculoRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Edificio ed = edificioRepository.save(new Edificio("El propio parqueadero",1000, 1000));
 
+        TipoVehiculo tv1 = tipoVehiculoRepository.save(new TipoVehiculo('C', 160));
+        TipoVehiculo tv2 = tipoVehiculoRepository.save(new TipoVehiculo('M', 60));
+        TipoVehiculo tv3 = tipoVehiculoRepository.save(new TipoVehiculo('B', 200));
 
-        Piso p1 = pisoRepository.save(new Piso(ed, 102, 47));
-        Piso p2 = pisoRepository.save(new Piso(ed, 60, 46));
-        Piso p3 = pisoRepository.save(new Piso(ed, 102, 49));
-
-
+        Piso p1 = pisoRepository.save(new Piso(ed, tv1));
+        Piso p2 = pisoRepository.save(new Piso(ed, tv2));
+        Piso p3 = pisoRepository.save(new Piso(ed, tv3));
 
         Vehiculo v1 = vehiculoRepository.save(new Vehiculo(p1,"NC099",1600));
         Vehiculo v2 = vehiculoRepository.save(new Vehiculo(p1,"JKE345",0000));
@@ -49,14 +56,11 @@ public class DBInitializer implements CommandLineRunner {
         Vehiculo v7 = vehiculoRepository.save(new Vehiculo(p2,"MOF983",1700));
         Vehiculo v8 = vehiculoRepository.save(new Vehiculo(p3,"AID123",1600));
 
-
-
         log.info("Database initialized");
-
 
         List<Piso> pisos = pisoRepository.findAllById(1);
         for (Piso piso : pisos) {
-            log.info(piso.getTarifa() + " " + piso.getTipoVehiculoP() + " " + piso.getTotalVehiculos());
+            log.info(piso.getTipoVehiculoP() + " " + piso.getTotalVehiculos());
         }
     }
 
