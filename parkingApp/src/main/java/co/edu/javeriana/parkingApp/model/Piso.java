@@ -30,6 +30,7 @@ public class Piso {
     private int espaciosDisponibles;
     
     @ManyToOne  
+    @JoinColumn(name = "tipo_vehiculo_n")
     private TipoVehiculo tipoVehiculo;
     
     public Piso(Edificio edificio, TipoVehiculo tipoVehiculo) {
