@@ -23,9 +23,6 @@ public class Piso {
     @JoinColumn(name="edificio_n")
     private Edificio edificio;
 
-    @Column(name = "tipo_vehiculop", nullable = false)
-    private char tipoVehiculoP;
-
     @Column(name = "total_vehiculos", nullable = false)
     private int totalVehiculos;
 
@@ -36,11 +33,10 @@ public class Piso {
     private int espaciosDisponibles;
 
     @OneToMany(mappedBy = "piso")
-    private List<Vehiculo> vehiculos;
+    private List<TipoVehiculo> tipoVehiculos;
     
-    public Piso(Edificio edificio, char tipoVehiculoP, int totalVehiculos, long tarifa, int espaciosDisponibles) {
+    public Piso(Edificio edificio, int totalVehiculos, long tarifa, int espaciosDisponibles) {
         this.edificio = edificio;
-        this.tipoVehiculoP = tipoVehiculoP;
         this.totalVehiculos = totalVehiculos;
         this.tarifa = tarifa;
         this.espaciosDisponibles = espaciosDisponibles;
@@ -63,14 +59,6 @@ public class Piso {
 
     public void setEdificio(Edificio edificio) {
         this.edificio = edificio;
-    }
-
-    public char getTipoVehiculoP() {
-        return tipoVehiculoP;
-    }
-
-    public void setTipoVehiculoP(char tipoVehiculoP) {
-        this.tipoVehiculoP = tipoVehiculoP;
     }
 
     public int getTotalVehiculos() {
