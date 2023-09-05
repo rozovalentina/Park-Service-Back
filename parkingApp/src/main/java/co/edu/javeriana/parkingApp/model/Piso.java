@@ -8,7 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -29,7 +29,7 @@ public class Piso {
     @Column(name = "espacios_disponibles", nullable = false)
     private int espaciosDisponibles;
 
-    @OneToMany(mappedBy = "piso")
+    @OneToOne(mappedBy = "piso")
     private List<TipoVehiculo> tipoVehiculos;
     
     public Piso(Edificio edificio, int totalVehiculos, int espaciosDisponibles) {
