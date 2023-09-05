@@ -26,19 +26,15 @@ public class Piso {
     @Column(name = "total_vehiculos", nullable = false)
     private int totalVehiculos;
 
-    @Column(name = "tarifa", nullable = false)
-    private long tarifa;
-
     @Column(name = "espacios_disponibles", nullable = false)
     private int espaciosDisponibles;
 
     @OneToMany(mappedBy = "piso")
     private List<TipoVehiculo> tipoVehiculos;
     
-    public Piso(Edificio edificio, int totalVehiculos, long tarifa, int espaciosDisponibles) {
+    public Piso(Edificio edificio, int totalVehiculos, int espaciosDisponibles) {
         this.edificio = edificio;
         this.totalVehiculos = totalVehiculos;
-        this.tarifa = tarifa;
         this.espaciosDisponibles = espaciosDisponibles;
     }
 
@@ -67,14 +63,6 @@ public class Piso {
 
     public void setTotalVehiculos(int totalVehiculos) {
         this.totalVehiculos = totalVehiculos;
-    }
-
-    public long getTarifa() {
-        return tarifa;
-    }
-
-    public void setTarifa(long tarifa) {
-        this.tarifa = tarifa;
     }
 
     public int getEspaciosDisponibles() {
