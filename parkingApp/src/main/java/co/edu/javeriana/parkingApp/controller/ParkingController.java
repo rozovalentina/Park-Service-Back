@@ -62,6 +62,20 @@ public class ParkingController {
         model.addAttribute("piso", new Piso());
         return "piso-create";
     }
+    @GetMapping("/piso/delete/{idPiso}")
+    public ModelAndView borrarPiso(@PathVariable Long idPiso){
+        String mensaje= pisoService.borrarPiso(idPiso);
+        List<Piso> pisos = pisoService.listarPisos();
+        ModelAndView pisoListView = new ModelAndView("piso-list");
+        pisoListView.addObject("allPisos", pisos);
+        if(mensaje.startsWith("No")){
+            pisoListView.addObject("error", mensaje);
+        }else{
+            log.info(mensaje);
+            pisoListView.addObject("success", mensaje);
+        }
+        return pisoListView;
+    }
     
 }
 

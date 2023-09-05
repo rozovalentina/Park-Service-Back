@@ -18,5 +18,5 @@ public interface PisoRepository extends JpaRepository<Piso, Long> {
     @Query("SELECT p FROM Piso p WHERE p.id = :id")
     List<Piso> findPisoById(int id);
 
-
+    void deleteById(int id);
 }

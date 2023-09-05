@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.javeriana.parkingApp.model.Piso;
 import co.edu.javeriana.parkingApp.repository.PisoRepository;
+import co.edu.javeriana.parkingApp.repository.VehiculoRepository;
 
 @Service
 public class PisoService {
@@ -24,5 +25,16 @@ public class PisoService {
 
     public void guardarPiso(Piso piso) {
         pisoRepository.save(piso);
+    }
+
+    public String borrarPiso(Long id){
+        Piso p=pisoRepository.findById(id).orElseThrow();
+        if(p.getTotalVehiculos()>0){
+            return "No se puede Borrar! Hay vehiculos en el piso";
+        }
+        else{
+            pisoRepository.deleteById(id);
+            return "Borrado Exitoso";
+        }        
     }
 }

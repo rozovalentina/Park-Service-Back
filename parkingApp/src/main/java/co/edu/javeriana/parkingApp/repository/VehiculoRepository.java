@@ -13,6 +13,7 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo, Long> {
     // https://www.baeldung.com/spring-data-derived-queries
     List<Vehiculo> findAllById(int id);
     
+    
     // JPQL
     // https://www.baeldung.com/spring-data-jpa-query
     @Query("SELECT p from Vehiculo p WHERE p.id = :id")

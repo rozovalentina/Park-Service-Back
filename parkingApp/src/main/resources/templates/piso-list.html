@@ -6,12 +6,19 @@
 </head>
 <body>
     <h1>Piso list</h1>
-
+    <div th:if="${error}" class="error-message">
+        <p th:text="${error}"></p>
+    </div>
+    <div th:if="${success}" class="success-message">
+        <p th:text="${success}"></p>
+    </div>
     <ul>
         <li th:each="piso : ${allPisos}">
             <p th:text="|${piso.tipoVehiculoP} ${piso.espaciosDisponibles}|"></p>
             <a th:href="@{/parkingApp/piso/view/{idPiso}(idPiso=${piso.id})}">View</a>
+            <a th:href="@{/parkingApp/piso/delete/{idPiso}(idPiso=${piso.id})}">Delete</a>
         </li>   
     </ul>
+    
 </body>
 </html>
