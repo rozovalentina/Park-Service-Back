@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import co.edu.javeriana.parkingApp.model.Edificio;
@@ -17,7 +18,9 @@ public interface EdificioRepository extends JpaRepository<Edificio, Long> {
     
     // JPQL
     // https://www.baeldung.com/spring-data-jpa-query
-    @Query("SELECT p from edificio p WHERE p.nombre LIKE concat(:text, '%')")
-    List<Edificio> findEdificioByNameStartingWith(String text);
+    @Query("SELECT e FROM Edificio e WHERE e.name LIKE :text%")
+    List<Edificio> findEdificioByNameStartingWith(@Param("text") String text);
+    
+
 
 }

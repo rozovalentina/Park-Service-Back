@@ -15,7 +15,8 @@ public interface PisoRepository extends JpaRepository<Piso, Long> {
     
     // JPQL
     // https://www.baeldung.com/spring-data-jpa-query
-    @Query("SELECT p from piso p WHERE p.id = concat(:text)")
-    List<Piso> findPisoById(int text);
+    @Query("SELECT p FROM Piso p WHERE p.id = :id")
+    List<Piso> findPisoById(int id);
+
 
 }

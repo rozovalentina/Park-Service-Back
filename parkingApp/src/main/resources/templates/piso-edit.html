@@ -7,22 +7,22 @@
 <body>
     <h1>Edit piso</h1>
 
-    <form th:action="@{/piso/save}" method="post">
-        <input type="hidden" name="id" th:field="${piso.id}">
-        
-        <label for="txtTipoVehiculoP">Tipo de vehículos permitidos:</label>
-        <input type="text" name="tipoVehiculoP" id="txtTipoVehiculoP" th:field="${piso.tipoVehiculoP}">
-
+    <form th:action="@{/parkingApp/piso/save}" method="post" th:object="${piso}">
+        <input type="hidden" th:field="*{id}">
+    
+        <label for="txtTipoVehiculo">Tipo de vehículos permitidos:</label>
+        <input type="text" id="txtTipoVehiculoP" th:field="*{tipoVehiculoP}">
+    
         <label for="txtTotalVehiculos">Total de vehículos en el piso:</label>
-        <input type="text" name="totalVehiculos" id="txtTotalVehiculos" th:field="${piso.totalVehiculos}">
-
+        <input type="text" id="txtTotalVehiculos" th:field="*{totalVehiculos}">
+    
         <label for="txtTarifa">Tarifa por minuto:</label>
-        <input type="text" name="tarifa" id="txtTarifa" th:field="${piso.tarifa}">
-        
-        <label for="txtEspaciosDisponibles"> Espacios disponibles: </label>
-        <input type="text" name="espaciosDisponibles" id="txtEspaciosDisponibles" th:field="${piso.espaciosDisponibles}">
-
-        <button>Enviar</button>
-    </form>
+        <input type="text" id="txtTarifa" th:field="*{tarifa}">
+    
+        <label for="txtEspaciosDisponibles">Espacios disponibles:</label>
+        <input type="text" id="txtEspaciosDisponibles" th:field="*{espaciosDisponibles}">
+    
+        <button type="submit">Enviar</button>
+    </form>    
 </body>
 </html>

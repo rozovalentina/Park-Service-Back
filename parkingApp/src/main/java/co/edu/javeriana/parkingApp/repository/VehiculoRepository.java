@@ -15,7 +15,7 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo, Long> {
     
     // JPQL
     // https://www.baeldung.com/spring-data-jpa-query
-    @Query("SELECT p from ehiculo p WHERE p.id = concat(:text)")
-    List<Vehiculo> findVehiculoById(String text);
+    @Query("SELECT p from Vehiculo p WHERE p.id = :id")
+    List<Vehiculo> findVehiculoById(int id);
 
 }
