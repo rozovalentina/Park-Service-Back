@@ -34,9 +34,9 @@ public class DBInitializer implements CommandLineRunner {
         Edificio ed = edificioRepository.save(new Edificio("El propio parqueadero",1000, 1000));
 
 
-        Piso p1 = pisoRepository.save(new Piso(ed, 'C', 3, 102, 47));
-        Piso p2 = pisoRepository.save(new Piso(ed, 'M', 4, 60, 46));
-        Piso p3 = pisoRepository.save(new Piso(ed, 'C', 1, 102, 49));
+        Piso p1 = pisoRepository.save(new Piso(ed, 102, 47));
+        Piso p2 = pisoRepository.save(new Piso(ed, 60, 46));
+        Piso p3 = pisoRepository.save(new Piso(ed, 102, 49));
 
 
 
