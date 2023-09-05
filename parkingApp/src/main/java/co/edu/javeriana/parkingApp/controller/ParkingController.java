@@ -53,7 +53,6 @@ public class ParkingController {
 
     @PostMapping("/piso/save")
     public RedirectView guardarPiso(@ModelAttribute Piso piso) {
-        log.info("Entre!");
         pisoService.guardarPiso(piso);
         return new RedirectView("/parkingApp/list");
     }
