@@ -28,9 +28,9 @@ public class Piso {
 
     @Column(name = "espacios_disponibles", nullable = false)
     private int espaciosDisponibles;
-
-    @OneToOne(mappedBy = "piso")
-    private List<TipoVehiculo> tipoVehiculos;
+    
+    @ManyToOne  
+    private TipoVehiculo tipoVehiculo;
     
     public Piso(Edificio edificio, TipoVehiculo tipoVehiculo) {
         this.edificio = edificio;
@@ -56,7 +56,7 @@ public class Piso {
         this.edificio = edificio;
     }
 
-    public int getTipoVehiculo() {
+    public TipoVehiculo getTipoVehiculo() {
         return tipoVehiculo;
     }
 

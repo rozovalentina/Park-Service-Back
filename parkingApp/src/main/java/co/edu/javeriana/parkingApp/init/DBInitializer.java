@@ -32,7 +32,7 @@ public class DBInitializer implements CommandLineRunner {
     @Autowired
     private VehiculoRepository vehiculoRepository;
 
-    @autowired
+    @Autowired
     private TipoVehiculoRepository tipoVehiculoRepository;
 
     @Override
@@ -60,7 +60,7 @@ public class DBInitializer implements CommandLineRunner {
 
         List<Piso> pisos = pisoRepository.findAllById(1);
         for (Piso piso : pisos) {
-            log.info(piso.getTipoVehiculoP() + " " + piso.getTotalVehiculos());
+            log.info(piso.getTipoVehiculo() + " " + piso.getTotalVehiculos());
         }
     }
 

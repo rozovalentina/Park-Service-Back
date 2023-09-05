@@ -16,6 +16,7 @@ public interface TipoVehiculoRepository extends JpaRepository<TipoVehiculo, Long
     // JPQL
     // https://www.baeldung.com/spring-data-jpa-query
     @Query("SELECT p FROM tipo_vehiculo p WHERE p.id = :id")
-    List<TipoVehiculo> findPisoById(int id);
+    List<TipoVehiculo> findTipoVehiculoById(int id);
 
     void deleteById(int id);
+}

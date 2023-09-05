@@ -22,7 +22,8 @@ public class Vehiculo {
 
     @Column(name = "hora_llegada", nullable = false)
     private int horaLlegada;
-
+    @Column(name = "placa")
+    private String placa;
     
     public Vehiculo(TipoVehiculo tipoVehiculo, String placa, int horaLlegada) {
         this.tipoVehiculo = tipoVehiculo;
@@ -41,7 +42,7 @@ public class Vehiculo {
         this.id = id;
     }
 
-    public Piso getTipoVehiculo() {
+    public TipoVehiculo getTipoVehiculo() {
         return tipoVehiculo;
     }
 
