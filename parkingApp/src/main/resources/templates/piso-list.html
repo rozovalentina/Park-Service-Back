@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Piso list</title>
+</head>
+<body>
+    <h1>Piso list</h1>
+
+    <ul>
+        <li th:each="piso : ${allPisos}">
+            <p th:text="|${piso.tipoVehiculop} ${piso.espaciosDisponibles}|"></p>
+            <a th:href="@{/piso/view/{idPiso}(idPiso=${piso.id})}">View</a>
+        </li>
+
+    </ul>
+</body>
+</html>

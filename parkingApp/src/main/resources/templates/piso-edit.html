@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit piso</title>
+</head>
+<body>
+    <h1>Edit piso</h1>
+
+    <form th:action="@{/piso/save}" method="post">
+        <input type="hidden" name="id" th:field="${piso.id}">
+        
+        <label for="txtTipoVehiculoP">Tipo de vehículos permitidos:</label>
+        <input type="text" name="tipoVehiculoP" id="txtTipoVehiculoP" th:field="${piso.tipoVehiculoP}">
+
+        <label for="txtTotalVehiculos">Total de vehículos en el piso:</label>
+        <input type="text" name="totalVehiculos" id="txtTotalVehiculos" th:field="${piso.totalVehiculos}">
+
+        <label for="txtTarifa">Tarifa por minuto:</label>
+        <input type="text" name="tarifa" id="txtTarifa" th:field="${piso.tarifa}">
+        
+        <label for="txtEspaciosDisponibles"> Espacios disponibles: </label>
+        <input type="text" name="espaciosDisponibles" id="txtEspaciosDisponibles" th:field="${piso.espaciosDisponibles}">
+
+        <button>Enviar</button>
+    </form>
+</body>
+</html>
