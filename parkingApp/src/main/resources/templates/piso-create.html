@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Piso</title>
+</head>
+<body>
+    <h1>Crear Nuevo Piso</h1>
+    <form th:action="@{/parkingApp/piso/save}" method="post" th:object="${piso}">
+        
+        <label for="txtTipoVehiculo">Tipo de vehículos permitidos:</label>
+        <input type="text" id="txtTipoVehiculoP" th:field="*{tipoVehiculoP}">
+        
+        <label for="txtTotalVehiculos">Total de vehículos en el piso:</label>
+        <input type="text" id="txtTotalVehiculos" th:field="*{totalVehiculos}">
+        
+        <label for="txtTarifa">Tarifa por minuto:</label>
+        <input type="text" id="txtTarifa" th:field="*{tarifa}">
+        
+        <label for="txtEspaciosDisponibles">Espacios disponibles:</label>
+        <input type="text" id="txtEspaciosDisponibles" th:field="*{espaciosDisponibles}">
+        
+        <button type="submit">Crear Piso</button>
+    </form>
+    
+</body>
+</html>
