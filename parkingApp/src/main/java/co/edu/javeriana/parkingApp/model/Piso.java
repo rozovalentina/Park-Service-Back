@@ -70,4 +70,11 @@ public class Piso {
         return totalVehiculos;
     }
 
+    @Override
+    public String toString() {
+        return "total Vehiculos=" + totalVehiculos + ", espacios Disponibles=" + espaciosDisponibles
+                + ", tipo Vehiculo= [" + tipoVehiculo.toString()+ "]";
+    }
+    
+
 }
