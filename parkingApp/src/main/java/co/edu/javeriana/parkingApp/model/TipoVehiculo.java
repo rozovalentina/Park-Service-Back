@@ -34,10 +34,10 @@ public class TipoVehiculo {
     public Long getId() {
         return id;
     }
-    public char getTipoPlaca() {
+    public char getTipo() {
         return tipo;
     }
-    public void setTipoPlaca(char tipo) {
+    public void setTipo(char tipo) {
         this.tipo = tipo;
     }
     public double getTarifa() {
@@ -49,7 +49,7 @@ public class TipoVehiculo {
 
     @Override
     public String toString() {
-        return "TipoVehiculo tipo=" + tipo + ", tarifa=" + tarifa;
+        return "tipo=" + tipo + ", tarifa=" + tarifa;
     }
     
 }

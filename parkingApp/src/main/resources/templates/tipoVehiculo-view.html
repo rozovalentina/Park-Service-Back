@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tipo vehículo view</title>
+</head>
+<body>
+    <h1>Tipo vehículo view</h1>
+
+    <p>Tipo de vehículos permitidos:</p>
+    <p th:text="${tipoVehiculo.toString()}"></p>
+    
+    <a th:href="@{/parkingApp/tipoVehiculo/list}">Volver</a>
+</body>
+</html>

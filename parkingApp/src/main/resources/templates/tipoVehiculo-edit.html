@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit tipo vehículo</title>
+</head>
+<body>
+    <h1>Edit tipo vehículo</h1>
+
+    <form th:action="@{/parkingApp/tipoVehiculo/save}" method="post" th:object="${tipoVehiculo}">
+        <input type="hidden" th:field="*{id}">
+    
+        <label for="txtTarifa">Tarifa:</label>
+        <input type="text" id="txtTarifa" th:field="*{tarifa}">
+
+        <button type="submit">Enviar</button>
+    </form>    
+</body>
+</html>

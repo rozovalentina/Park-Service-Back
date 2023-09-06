@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo tipo de vehículo</title>
+</head>
+<body>
+    <h1>Crear Nuevo tipo de vehículo</h1>
+    <form th:action="@{/parkingApp/tipoVehiculo/save}" method="post" th:object="${tipoVehiculo}">
+        
+        <label for="txtTipo">Tipo de vehículos permitidos:</label>
+        <input type="text" id="txtTipo" th:field="*{tipo}">
+        
+        <label for="txtTarifa">Tarifa por minuto:</label>
+        <input type="text" id="txtTarifa" th:field="*{tarifa}">
+        
+        <button type="submit">Crear Tipo de vehículo</button>
+    </form>
+    
+</body>
+</html>

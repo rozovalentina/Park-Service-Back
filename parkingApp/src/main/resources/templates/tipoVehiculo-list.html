@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tipo Vehículo list</title>
+</head>
+<body>
+    <h1>Tipo Vehículo list</h1>
+    <div th:if="${error}" class="error-message">
+        <p th:text="${error}"></p>
+    </div>
+    <div th:if="${success}" class="success-message">
+        <p th:text="${success}"></p>
+    </div>
+    <ul>
+        <li th:each="tipoVehiculo : ${alltipoVehiculos}">
+            <p th:text="|${tipoVehiculo.toString()}|"></p>
+            <a th:href="@{/parkingApp/tipoVehiculo/view/{idTipoVehiculo}(idTipoVehiculo=${tipoVehiculo.id})}">View</a>
+            <a th:href="@{/parkingApp/tipoVehiculo/delete/{idPTipoVehiculo}(idTipoVehiculo=${tipoVehiculo.id})}">Delete</a>
+            <a th:href="@{/parkingApp/tipoVehiculo/edit/{idTipoVehiculo}(idTipoVehiculo=${tipoVehiculo.id})}">Edit</a>
+        </li>   
+    </ul>
+    
+</body>
+</html>
