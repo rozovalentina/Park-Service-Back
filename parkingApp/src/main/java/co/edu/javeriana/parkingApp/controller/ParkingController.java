@@ -35,7 +35,7 @@ public class ParkingController {
         return pisoView;
     }
 
-    @GetMapping("/list")
+    @GetMapping("/piso/list")
     public ModelAndView listarPisos() {
         List<Piso> pisos = pisoService.listarPisos();
         ModelAndView pisoListView = new ModelAndView("piso-list");
@@ -43,7 +43,7 @@ public class ParkingController {
         return pisoListView;
     }
 
-    @GetMapping("/edit/{idPiso}")
+    @GetMapping("/piso/edit/{idPiso}")
     public ModelAndView editarPiso(@PathVariable Long idPiso) {
         Piso piso = pisoService.recuperarPiso(idPiso);
         ModelAndView pisoEditView = new ModelAndView("piso-edit");
