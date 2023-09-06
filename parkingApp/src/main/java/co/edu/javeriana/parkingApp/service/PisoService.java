@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import co.edu.javeriana.parkingApp.model.Piso;
 import co.edu.javeriana.parkingApp.repository.PisoRepository;
-import co.edu.javeriana.parkingApp.repository.VehiculoRepository;
 
 @Service
 public class PisoService {
