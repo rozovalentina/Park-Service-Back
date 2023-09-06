@@ -26,6 +26,7 @@ public class TipoVehiculo {
     public TipoVehiculo(){
 
     };
+    
     public TipoVehiculo(char tipo, double tarifa) {
         this.tipo = tipo;
         this.tarifa = tarifa;
@@ -45,4 +46,10 @@ public class TipoVehiculo {
     public void setTarifa(double tarifa) {
         this.tarifa = tarifa;
     }
+
+    @Override
+    public String toString() {
+        return "TipoVehiculo tipo=" + tipo + ", tarifa=" + tarifa;
+    }
+    
 }

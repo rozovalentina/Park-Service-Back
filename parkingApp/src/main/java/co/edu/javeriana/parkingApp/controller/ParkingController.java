@@ -19,7 +19,7 @@ import co.edu.javeriana.parkingApp.model.Piso;
 import co.edu.javeriana.parkingApp.service.PisoService;
 
 @Controller
-@RequestMapping("/parkingApp")
+@RequestMapping("/parkingApp/piso")
 public class ParkingController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class ParkingController {
 
     Logger log = LoggerFactory.getLogger(getClass());
 
-    @GetMapping("/piso/view/{idPiso}")
+    @GetMapping("/view/{idPiso}")
     public ModelAndView recuperarPiso(@PathVariable Long idPiso) {
         Piso piso = pisoService.recuperarPiso(idPiso);
         ModelAndView pisoView = new ModelAndView("piso-view");
@@ -35,7 +35,7 @@ public class ParkingController {
         return pisoView;
     }
 
-    @GetMapping("/piso/list")
+    @GetMapping("/list")
     public ModelAndView listarPisos() {
         List<Piso> pisos = pisoService.listarPisos();
         ModelAndView pisoListView = new ModelAndView("piso-list");
@@ -43,7 +43,7 @@ public class ParkingController {
         return pisoListView;
     }
 
-    @GetMapping("/piso/edit/{idPiso}")
+    @GetMapping("/edit/{idPiso}")
     public ModelAndView editarPiso(@PathVariable Long idPiso) {
         Piso piso = pisoService.recuperarPiso(idPiso);
         ModelAndView pisoEditView = new ModelAndView("piso-edit");
@@ -51,17 +51,17 @@ public class ParkingController {
         return pisoEditView;
     }
 
-    @PostMapping("/piso/save")
+    @PostMapping("/save")
     public RedirectView guardarPiso(@ModelAttribute Piso piso) {
         pisoService.guardarPiso(piso);
         return new RedirectView("/parkingApp/list");
     }
-    @GetMapping("piso/create")
+    @GetMapping("/create")
     public String mostrarPisoNuevo(Model model){
         model.addAttribute("piso", new Piso());
         return "piso-create";
     }
-    @GetMapping("/piso/delete/{idPiso}")
+    @GetMapping("/delete/{idPiso}")
     public ModelAndView borrarPiso(@PathVariable Long idPiso){
         String mensaje= pisoService.borrarPiso(idPiso);
         List<Piso> pisos = pisoService.listarPisos();

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class homeController {
-    @GetMapping("/")
+    @GetMapping("/parkingApp")
     public String home(){        
         return "admin-pisos";
     }
