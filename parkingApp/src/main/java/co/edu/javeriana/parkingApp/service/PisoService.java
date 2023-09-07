@@ -22,6 +22,11 @@ public class PisoService {
         return pisoRepository.findAll();
     }
 
+    public void editarPiso(long idPiso){
+        Piso p=pisoRepository.findById(idPiso).orElseThrow();
+        
+    }
+
     public void guardarPiso(Piso piso) {
         pisoRepository.save(piso);
     }

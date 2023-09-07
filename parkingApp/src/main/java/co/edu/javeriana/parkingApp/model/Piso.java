@@ -24,7 +24,7 @@ public class Piso {
     private int totalVehiculos;
 
     @Column(name = "espacios_disponibles", nullable = false)
-    private int espaciosDisponibles;
+    private long espaciosDisponibles;
     
     @ManyToOne  
     @JoinColumn(name = "tipo_vehiculo_n")
@@ -33,11 +33,19 @@ public class Piso {
     public Piso(Edificio edificio, TipoVehiculo tipoVehiculo) {
         this.edificio = edificio;
         this.tipoVehiculo = tipoVehiculo;
+        long area = edificio.getAncho() * edificio.getLargo();
+        long result = (area - Math.round(area * 0.2))/2;
+        this.espaciosDisponibles = result;
+        this.totalVehiculos = 0;
     }
 
     public Piso() {
     }
 
+    public void agregarVehiculo(){
+        this.totalVehiculos++;
+        this.espaciosDisponibles--;
+    }
     public Long getId() {
         return id;
     }
@@ -62,7 +70,7 @@ public class Piso {
         this.tipoVehiculo = tipoVehiculo;
     }
 
-    public int getEspaciosDisponibles() {
+    public long getEspaciosDisponibles() {
         return espaciosDisponibles;
     }
 

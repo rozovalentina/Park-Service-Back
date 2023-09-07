@@ -18,7 +18,7 @@ public class TipoVehiculoService {
         return tipoVehiculoRepository.findById(id).orElseThrow();
     }
 
-    public List<TipoVehiculo> listarTipoVehiculo() {
+    public List<TipoVehiculo> listarTipoVehiculos() {
         return tipoVehiculoRepository.findAll();
     }
 

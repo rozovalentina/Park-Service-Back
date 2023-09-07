@@ -36,8 +36,8 @@ public class TipoVehiculoController {
     }
 
     @GetMapping("/list")
-    public ModelAndView listarTipoVehiculo() {
-        List<TipoVehiculo> tipoVehiculos = tipoVehiculoService.listarTipoVehiculo();
+    public ModelAndView listarTipoVehiculos() {
+        List<TipoVehiculo> tipoVehiculos = tipoVehiculoService.listarTipoVehiculos();
         ModelAndView tipoVehiculoListView = new ModelAndView("tipoVehiculo-list");
         tipoVehiculoListView.addObject("allTipoVehiculos", tipoVehiculos);
         return tipoVehiculoListView;
@@ -64,7 +64,7 @@ public class TipoVehiculoController {
     @GetMapping("/delete/{idTipoVehiculo}")
     public ModelAndView borrarTipoVehiculo(@PathVariable Long tipoVehiculo){
         String mensaje= tipoVehiculoService.borrarTipoVehiculo(tipoVehiculo);
-        List<TipoVehiculo> tipoVehiculos = tipoVehiculoService.listarTipoVehiculo();
+        List<TipoVehiculo> tipoVehiculos = tipoVehiculoService.listarTipoVehiculos();
         ModelAndView TipoVehiculoListView = new ModelAndView("tipoVehiculo-list");
         TipoVehiculoListView.addObject("allTipoVehiculos", tipoVehiculos);
         if(mensaje.startsWith("No")){
