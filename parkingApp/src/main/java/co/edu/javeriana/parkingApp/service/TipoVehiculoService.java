@@ -18,6 +18,10 @@ public class TipoVehiculoService {
         return tipoVehiculoRepository.findById(id).orElseThrow();
     }
 
+    public void borrarTipoVehiculo(Long id){
+        tipoVehiculoRepository.deleteById(id);    
+    }
+
     public List<TipoVehiculo> listarTipoVehiculos() {
         return tipoVehiculoRepository.findAll();
     }
@@ -26,8 +30,5 @@ public class TipoVehiculoService {
         tipoVehiculoRepository.save(tipoVehiculo);
     }
 
-    public String borrarTipoVehiculo(Long id){
-        tipoVehiculoRepository.deleteById(id);
-        return "Borrado Exitoso";      
-    }
+    
 }
