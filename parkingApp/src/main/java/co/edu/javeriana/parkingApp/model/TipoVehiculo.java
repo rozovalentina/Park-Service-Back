@@ -35,6 +35,10 @@ public class TipoVehiculo {
         this.tarifa = tarifa;
         this.area = area;
     }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }

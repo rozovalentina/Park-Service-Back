@@ -9,7 +9,7 @@
 
     <form th:action="@{/parkingApp/tipoVehiculo/save}" method="post" th:object="${tipoVehiculo}">
         <input type="hidden" th:field="*{id}">
-    
+        
         <label for="txtTarifa">Tarifa:</label>
         <input type="text" id="txtTarifa" th:field="*{tarifa}">
 
