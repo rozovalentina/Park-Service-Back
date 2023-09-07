@@ -39,7 +39,7 @@ public class Piso {
         this.totalVehiculos = 0;
     }
 
-    public Piso() {
+    public Piso(){
     }
 
     public void agregarVehiculo(){
@@ -83,6 +83,11 @@ public class Piso {
         return "total Vehiculos=" + totalVehiculos + ", espacios Disponibles=" + espaciosDisponibles
                 + ", tipo Vehiculo= [" + tipoVehiculo.toString()+ "]";
     }
-    
+
+    public void calcularEspacioDisponible(){
+        long area = edificio.getAncho() * edificio.getLargo();
+        long result = Math.round((area - Math.round(area * 0.2))/tipoVehiculo.getArea());
+        this.espaciosDisponibles = result;
+    }    
 
 }

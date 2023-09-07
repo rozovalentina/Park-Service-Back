@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import co.edu.javeriana.parkingApp.model.Edificio;
 import co.edu.javeriana.parkingApp.model.Piso;
+import co.edu.javeriana.parkingApp.model.TipoVehiculo;
+import co.edu.javeriana.parkingApp.service.EdificioServicie;
 import co.edu.javeriana.parkingApp.service.PisoService;
+import co.edu.javeriana.parkingApp.service.TipoVehiculoService;
 
 @Controller
 @RequestMapping("/parkingApp/piso")
@@ -24,7 +28,10 @@ public class PisoController {
 
     @Autowired
     private PisoService pisoService;
-
+    @Autowired
+    private TipoVehiculoService tipoVehiculoService;
+    @Autowired
+    private EdificioServicie edificioServicie;
     Logger log = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/view/{idPiso}")
@@ -53,12 +60,23 @@ public class PisoController {
 
     @PostMapping("/save")
     public RedirectView guardarPiso(@ModelAttribute Piso piso) {
+        TipoVehiculo p=tipoVehiculoService.recuperTipoVehiculoPorTipo(piso.getTipoVehiculo().getTipo());
+        Edificio e= edificioServicie.recuperarEdicio(Long.valueOf(1));
+        if(p!=null){
+            piso.setTipoVehiculo(p);
+            piso.setEdificio(e);
+            piso.calcularEspacioDisponible();
+        }else{
+            return new RedirectView("/parkingApp/tipoVehiculo/create");
+        }
+        
         pisoService.guardarPiso(piso);
         return new RedirectView("/parkingApp/piso/list");
     }
     @GetMapping("/create")
     public String mostrarPisoNuevo(Model model){
-        model.addAttribute("piso", new Piso());
+        Piso p= new Piso();
+        model.addAttribute("piso", p);
         return "piso-create";
     }
     @GetMapping("/delete/{idPiso}")

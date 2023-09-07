@@ -29,6 +29,9 @@ public class TipoVehiculoService {
     public void guardarTipoVehiculo(TipoVehiculo tipoVehiculo) {
         tipoVehiculoRepository.save(tipoVehiculo);
     }
+    public TipoVehiculo recuperTipoVehiculoPorTipo(char tipo){
+        return tipoVehiculoRepository.findByTipo(tipo);
+    }
 
     
 }
