@@ -10,7 +10,7 @@
     <form th:action="@{/parkingApp/piso/save}" method="post" th:object="${piso}">
         
         <label for="txtTipoVehiculo">Tipo de vehículos permitidos:</label>
-        <input type="text" id="txtTipoVehiculo" th:field="*{tipoVehiculo}">
+        <input type="text" id="txtTipoVehiculo" th:field="*{tipoVehiculo.tipo}">
         
         <label for="txtTotalVehiculos">Total de vehículos en el piso:</label>
         <input type="text" id="txtTotalVehiculos" th:field="*{totalVehiculos}">
