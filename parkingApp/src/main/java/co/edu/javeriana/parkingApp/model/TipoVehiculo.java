@@ -20,6 +20,9 @@ public class TipoVehiculo {
     private char tipo;
     @Column(name = "tarifa")
     private double tarifa;
+    @Column(name = "area")
+    private int area;
+    
     @OneToMany(mappedBy = "tipoVehiculo")
     private List<Piso> pisos;
 
@@ -27,9 +30,10 @@ public class TipoVehiculo {
 
     };
     
-    public TipoVehiculo(char tipo, double tarifa) {
+    public TipoVehiculo(char tipo, double tarifa, int area) {
         this.tipo = tipo;
         this.tarifa = tarifa;
+        this.area = area;
     }
     public Long getId() {
         return id;
@@ -46,10 +50,16 @@ public class TipoVehiculo {
     public void setTarifa(double tarifa) {
         this.tarifa = tarifa;
     }
+    public int getArea() {
+        return area;
+    }
+    public void setArea(int area) {
+        this.area = area;
+    }
 
     @Override
     public String toString() {
-        return "tipo=" + tipo + ", tarifa=" + tarifa;
+        return "tipo=" + tipo + ", tarifa=" + tarifa + ", area=" + area;
     }
     
 }
