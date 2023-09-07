@@ -16,7 +16,7 @@
         <li th:each="tipoVehiculo : ${allTipoVehiculos}">
             <p th:text="|${tipoVehiculo.toString()}|"></p>
             <a th:href="@{/parkingApp/tipoVehiculo/view/{idTipoVehiculo}(idTipoVehiculo=${tipoVehiculo.id})}">View</a>
-            <a th:href="@{/parkingApp/tipoVehiculo/delete/{idPTipoVehiculo}(idTipoVehiculo=${tipoVehiculo.id})}">Delete</a>
+            <a th:href="@{/parkingApp/tipoVehiculo/delete/{idTipoVehiculo}(idTipoVehiculo=${tipoVehiculo.id})}">Delete</a>
             <a th:href="@{/parkingApp/tipoVehiculo/edit/{idTipoVehiculo}(idTipoVehiculo=${tipoVehiculo.id})}">Edit</a>
         </li>   
     </ul>

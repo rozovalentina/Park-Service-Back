@@ -62,18 +62,9 @@ public class TipoVehiculoController {
         return "tipoVehiculo-create";
     }
     @GetMapping("/delete/{idTipoVehiculo}")
-    public ModelAndView borrarTipoVehiculo(@PathVariable Long tipoVehiculo){
-        String mensaje= tipoVehiculoService.borrarTipoVehiculo(tipoVehiculo);
-        List<TipoVehiculo> tipoVehiculos = tipoVehiculoService.listarTipoVehiculos();
-        ModelAndView TipoVehiculoListView = new ModelAndView("tipoVehiculo-list");
-        TipoVehiculoListView.addObject("allTipoVehiculos", tipoVehiculos);
-        if(mensaje.startsWith("No")){
-            TipoVehiculoListView.addObject("error", mensaje);
-        }else{
-            log.info(mensaje);
-            TipoVehiculoListView.addObject("success", mensaje);
-        }
-        return TipoVehiculoListView;
+    public RedirectView borrarTipoVehiculo(@PathVariable Long idTipoVehiculo){
+        tipoVehiculoService.borrarTipoVehiculo(idTipoVehiculo);
+        return new RedirectView("/parkingApp/tipoVehiculo/list");
     }
     
 }
