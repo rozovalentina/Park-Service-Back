@@ -12,12 +12,6 @@
         <label for="txtTipoVehiculo">Tipo de vehículos permitidos:</label>
         <input type="text" id="txtTipoVehiculo" th:field="*{tipoVehiculo.tipo}">
         
-        <label for="txtTotalVehiculos">Total de vehículos en el piso:</label>
-        <input type="text" id="txtTotalVehiculos" th:field="*{totalVehiculos}">
-        
-        <label for="txtEspaciosDisponibles">Espacios disponibles:</label>
-        <input type="text" id="txtEspaciosDisponibles" th:field="*{espaciosDisponibles}">
-        
         <button type="submit">Crear Piso</button>
     </form>
     <a th:href="@{/parkingApp/piso/list}">Volver</a>

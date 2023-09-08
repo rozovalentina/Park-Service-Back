@@ -53,7 +53,6 @@ public class TipoVehiculoController {
 
     @PostMapping("/save")
     public RedirectView guardarTipoVehiculo(@ModelAttribute TipoVehiculo tipoVehiculo) {
-        tipoVehiculoService.recuperarTipoVehiculo(tipoVehiculo.getId());
         tipoVehiculoService.guardarTipoVehiculo(tipoVehiculo);
         return new RedirectView("/parkingApp/tipoVehiculo/list");
     }

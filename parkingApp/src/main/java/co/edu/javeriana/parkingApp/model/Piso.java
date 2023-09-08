@@ -33,9 +33,7 @@ public class Piso {
     public Piso(Edificio edificio, TipoVehiculo tipoVehiculo) {
         this.edificio = edificio;
         this.tipoVehiculo = tipoVehiculo;
-        long area = edificio.getAncho() * edificio.getLargo();
-        long result = Math.round((area - Math.round(area * 0.2))/tipoVehiculo.getArea());
-        this.espaciosDisponibles = result;
+        calcularEspacioDisponible();
         this.totalVehiculos = 0;
     }
 

@@ -23,8 +23,7 @@ public class PisoService {
     }
 
     public void editarPiso(long idPiso){
-        Piso p=pisoRepository.findById(idPiso).orElseThrow();
-        
+        pisoRepository.findById(idPiso).orElseThrow();
     }
 
     public void guardarPiso(Piso piso) {
