@@ -1,5 +1,8 @@
 package co.edu.javeriana.parkingApp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,17 +34,22 @@ public class Piso {
     @JoinColumn(name = "tipo_vehiculo_n")
     private TipoVehiculo tipoVehiculo;
     
+    @OneToMany(mappedBy = "piso")
+    private List<Vehiculo> vehiculos;
+
     public Piso(Edificio edificio, TipoVehiculo tipoVehiculo) {
         this.edificio = edificio;
         this.tipoVehiculo = tipoVehiculo;
         calcularEspacioDisponible();
         this.totalVehiculos = 0;
+        this.vehiculos= new ArrayList<>();
     }
 
     public Piso(){
     }
 
-    public void agregarVehiculo(){
+    public void agregarVehiculo(Vehiculo vehiculo){
+        vehiculos.add(vehiculo);
         this.totalVehiculos++;
         this.espaciosDisponibles--;
     }

@@ -24,11 +24,16 @@ public class Vehiculo {
     private int horaLlegada;
     @Column(name = "placa")
     private String placa;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "piso_n")
+    private Piso piso; 
+
     public Vehiculo(TipoVehiculo tipoVehiculo, String placa, int horaLlegada) {
         this.tipoVehiculo = tipoVehiculo;
         this.placa = placa;
         this.horaLlegada = horaLlegada;
+        this.piso=null;
     }
 
     public Vehiculo() {
@@ -66,4 +71,12 @@ public class Vehiculo {
         this.horaLlegada = horaLlegada;
     }
 
+    public Piso getPiso() {
+        return piso;
+    }
+
+    public void setPiso(Piso piso) {
+        this.piso = piso;
+    }
+    
 }
