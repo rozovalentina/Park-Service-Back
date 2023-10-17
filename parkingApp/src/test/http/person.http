@@ -1,0 +1,47 @@
+### PersonController.listarPersonas
+GET http://localhost:8080/person/list
+
+### PersonController.recuperarPersona
+GET http://localhost:8080/person/1
+
+### PersonController.buscarPersonas
+GET http://localhost:8080/person/search?searchText=Do
+
+### PersonController.crearPersona
+POST http://localhost:8080/person
+Content-Type: application/json
+
+{
+    "firstName": "Juan",
+    "lastName": "Perez",
+    "email": "juan.perez@example.com"
+}
+
+### PersonController.modificarPersona
+PUT http://localhost:8080/person
+Content-Type: application/json
+
+{
+    "id": 2,
+    "firstName": "Pedro",
+    "lastName": "Urdemales",
+    "email": "pedro@example.com"
+
+}
+
+### PersonController.modificarPersona
+PUT http://localhost:8080/person
+Content-Type: application/json
+
+{
+    "id": 2,
+    "firstName": "Pedro",
+    "lastName": "",
+    "email": "pedro@example.com"
+
+}
+
+### PersonController.modificarNombre
+PATCH http://localhost:8080/person/1/nombre
+
+Anastasio
