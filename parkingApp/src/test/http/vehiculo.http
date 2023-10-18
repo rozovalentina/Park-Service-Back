@@ -13,3 +13,6 @@ Content-Type: application/json
 {
     "id": 2
 }
+
+###obtener pisos por tipo
+GET http://localhost:8090/gestionParqueaderos/pisosPorTipoVehiculo/B
