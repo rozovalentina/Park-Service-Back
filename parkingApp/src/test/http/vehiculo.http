@@ -1,0 +1,9 @@
+### PisoControllerRest.registrarVehiculo
+POST http://localhost:8080/gestionParqueaderos/
+
+Content-Type: application/json
+
+{
+    "id": 1 
+}
+
