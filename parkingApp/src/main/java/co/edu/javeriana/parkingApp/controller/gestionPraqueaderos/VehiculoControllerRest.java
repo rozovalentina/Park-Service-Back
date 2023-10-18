@@ -18,7 +18,7 @@ public class VehiculoControllerRest {
     private VehiculoService vehiculoService;
 
     @CrossOrigin("http://localhost:4200/")
-    @PostMapping("")
+    @PostMapping("/crearVehiculo")
     public Vehiculo crearVehiculo(@Valid @RequestBody Vehiculo v){
         return vehiculoService.guardarVehiculo(v);
     }

@@ -23,10 +23,10 @@ public class PisoControllerRest {
     private PisoService pisoService;
 
     @CrossOrigin("http://localhost:4200/")
-    @PostMapping("")
+    @PostMapping("/registrarVehiculo")
     public void registrarVehiculo(@Valid @RequestBody Vehiculo v, @RequestParam Long idPiso){    
         vehiculoService.guardarVehiculo(v);    
         Piso p = pisoService.recuperarPiso(idPiso);        
         p.agregarVehiculo(v);
-    }
+    }    
 }
