@@ -55,7 +55,16 @@ public class DBInitializer implements CommandLineRunner {
         Vehiculo v6 = vehiculoRepository.save(new Vehiculo(tv2,"LRH71H",1800));
         Vehiculo v7 = vehiculoRepository.save(new Vehiculo(tv3,"MOF983",1700));
         Vehiculo v8 = vehiculoRepository.save(new Vehiculo(tv3,"AID123",1600));
-
+        p1.agregarVehiculo(v1);
+        v1.setPiso(p1);
+        vehiculoRepository.save(v1);
+        p1.agregarVehiculo(v2);        
+        v2.setPiso(p1);
+        vehiculoRepository.save(v2);
+        p1.agregarVehiculo(v3);        
+        v3.setPiso(p1);
+        vehiculoRepository.save(v3);
+        pisoRepository.save(p1);
         log.info("Database initialized");
 
         List<Piso> pisos = pisoRepository.findAllById(1);
@@ -63,6 +72,5 @@ public class DBInitializer implements CommandLineRunner {
             log.info(piso.getTipoVehiculo() + " " + piso.getTotalVehiculos());
         }
     }
-
 }
 

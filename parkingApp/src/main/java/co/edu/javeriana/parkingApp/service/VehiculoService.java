@@ -18,4 +18,5 @@ public class VehiculoService {
     public Vehiculo guardarVehiculo(Vehiculo vehiculo){
         return vehiculoRepository.save(vehiculo);
     }
+    
 }

@@ -1,6 +1,11 @@
 package co.edu.javeriana.parkingApp.controller.gestionPraqueaderos;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.javeriana.parkingApp.model.Vehiculo;
@@ -17,10 +23,13 @@ import jakarta.validation.Valid;
 import co.edu.javeriana.parkingApp.model.Piso;
 import java.util.List;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/gestionParqueaderos")
 public class PisoControllerRest {
+    Logger log = LoggerFactory.getLogger(getClass());
     @Autowired
     private VehiculoService vehiculoService;
     @Autowired
@@ -28,12 +37,33 @@ public class PisoControllerRest {
 
     @CrossOrigin("http://localhost:4200/")
     @PostMapping("/registrarVehiculo")
-    public Piso registrarVehiculo(@Valid @RequestBody Vehiculo v, @RequestParam Long idPiso){    
-        vehiculoService.guardarVehiculo(v);    
-        Piso p = pisoService.recuperarPiso(idPiso);        
+    public Piso registrarVehiculo(@Valid @RequestBody Vehiculo v, @RequestParam Long idPiso){   
+        Piso p = pisoService.recuperarPiso(idPiso);    
+        v.setPiso(p);    
+        vehiculoService.guardarVehiculo(v);  
         p.agregarVehiculo(v);
+        pisoService.guardarPiso(p);
         return p;
-    }    
+    }   
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/registrarSalida/{idVehiculo}")
+    public ResponseEntity<String> registrarSalida(@PathVariable("idVehiculo") Long idVehiculo){
+        Vehiculo v = vehiculoService.recuperarVehiculo(idVehiculo);
+        log.info(null, null, idVehiculo, v);
+        List<Piso> pisos = pisoService.listarPisos();
+        int k=0;
+        Piso p= null;
+        while (k<pisos.size()) {
+            p=pisos.get(k);
+            if(p.estaVehiculo(v)){
+                p.sacarVehiculo(v);
+                pisoService.guardarPiso(p);
+                return ResponseEntity.ok("Vehiculo debe: "+ p.sacarVehiculo(v));
+            }
+            k++;
+        }  
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No encontrado el vehiculo");    
+    }
     @CrossOrigin("http://localhost:4200/")
     @GetMapping("/pisosPorTipoVehiculo/{tipoVehiculo}")
     public List<Piso> mostrarPisosPorTipoVehiculo(@PathVariable("tipoVehiculo") char tipoVehiculo){
@@ -46,4 +76,5 @@ public class PisoControllerRest {
         }
         return aRetornar;
     }
+
 }

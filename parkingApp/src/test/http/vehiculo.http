@@ -11,8 +11,12 @@ POST http://localhost:8090/gestionParqueaderos/crearVehiculo
 Content-Type: application/json
 
 {
-    "id": 2
+    "id": 9,
+    "placa": "cosa"
 }
 
 ###obtener pisos por tipo
 GET http://localhost:8090/gestionParqueaderos/pisosPorTipoVehiculo/B
+
+### obtener cobro
+GET http://localhost:8090/gestionParqueaderos/registrarSalida/1
