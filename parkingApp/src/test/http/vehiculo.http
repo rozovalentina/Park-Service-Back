@@ -19,4 +19,4 @@ Content-Type: application/json
 GET http://localhost:8090/gestionParqueaderos/pisosPorTipoVehiculo/B
 
 ### obtener cobro
-GET http://localhost:8090/gestionParqueaderos/registrarSalida/1
+GET http://localhost:8090/gestionParqueaderos/registrarSalida/3

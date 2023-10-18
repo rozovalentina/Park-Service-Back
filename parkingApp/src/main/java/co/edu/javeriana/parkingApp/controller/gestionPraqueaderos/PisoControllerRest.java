@@ -58,6 +58,7 @@ public class PisoControllerRest {
             if(p.estaVehiculo(v)){
                 p.sacarVehiculo(v);
                 pisoService.guardarPiso(p);
+                vehiculoService.borrarVehiculo(idVehiculo);
                 return ResponseEntity.ok("Vehiculo debe: "+ p.sacarVehiculo(v));
             }
             k++;

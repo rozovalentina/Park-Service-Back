@@ -19,4 +19,7 @@ public class VehiculoService {
         return vehiculoRepository.save(vehiculo);
     }
     
+    public void borrarVehiculo(Long idLong){
+        vehiculoRepository.deleteById(idLong);
+    }
 }
