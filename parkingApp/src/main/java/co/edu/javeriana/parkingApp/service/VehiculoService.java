@@ -15,7 +15,7 @@ public class VehiculoService {
         return vehiculoRepository.findById(idLong).orElseThrow();
     }
 
-    public void guardarVehiculo(Vehiculo vehiculo){
-        vehiculoRepository.save(vehiculo);
+    public Vehiculo guardarVehiculo(Vehiculo vehiculo){
+        return vehiculoRepository.save(vehiculo);
     }
 }
