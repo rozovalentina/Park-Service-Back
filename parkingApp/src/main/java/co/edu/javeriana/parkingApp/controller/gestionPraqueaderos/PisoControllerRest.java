@@ -2,6 +2,7 @@ package co.edu.javeriana.parkingApp.controller.gestionPraqueaderos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +25,11 @@ public class PisoControllerRest {
 
     @CrossOrigin("http://localhost:4200/")
     @PostMapping("/registrarVehiculo")
-    public void registrarVehiculo(@Valid @RequestBody Vehiculo v, @RequestParam Long idPiso){    
+    public Piso registrarVehiculo(@Valid @RequestBody Vehiculo v, @RequestParam Long idPiso){    
         vehiculoService.guardarVehiculo(v);    
         Piso p = pisoService.recuperarPiso(idPiso);        
         p.agregarVehiculo(v);
+        return p;
     }    
+    
 }
