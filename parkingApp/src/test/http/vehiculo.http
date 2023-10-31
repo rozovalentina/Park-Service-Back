@@ -3,7 +3,6 @@ POST http://localhost:8090/gestionParqueaderos/registrarVehiculo?idPiso=1
 Content-Type: application/json
 
 {
-    
     "id": 1 
 }
 ### crear VEhiculo
@@ -19,4 +18,4 @@ Content-Type: application/json
 GET http://localhost:8090/gestionParqueaderos/pisosPorTipoVehiculo/B
 
 ### obtener cobro
-GET http://localhost:8090/gestionParqueaderos/registrarSalida/3
+GET http://localhost:8090/gestionParqueaderos/registrarSalida/1

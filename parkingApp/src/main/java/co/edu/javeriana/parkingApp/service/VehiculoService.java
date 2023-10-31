@@ -1,5 +1,7 @@
 package co.edu.javeriana.parkingApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,9 @@ public class VehiculoService {
     @Autowired
     private VehiculoRepository vehiculoRepository;
 
+    public List<Vehiculo> findALL(){
+        return vehiculoRepository.findAll();
+    }
     public Vehiculo recuperarVehiculo(Long idLong){
         return vehiculoRepository.findById(idLong).orElseThrow();
     }
