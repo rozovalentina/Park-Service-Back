@@ -1,5 +1,6 @@
 package co.edu.javeriana.parkingApp.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -19,7 +20,7 @@ public class TipoVehiculo {
     @Column(name = "tipo")
     private char tipo;
     @Column(name = "tarifa")
-    private double tarifa;
+    private BigDecimal tarifa;
     @Column(name = "area")
     private int area;
     
@@ -30,7 +31,7 @@ public class TipoVehiculo {
 
     };
     
-    public TipoVehiculo(char tipo, double tarifa, int area) {
+    public TipoVehiculo(char tipo, BigDecimal tarifa, int area) {
         this.tipo = tipo;
         this.tarifa = tarifa;
         this.area = area;
@@ -48,10 +49,10 @@ public class TipoVehiculo {
     public void setTipo(char tipo) {
         this.tipo = tipo;
     }
-    public double getTarifa() {
+    public BigDecimal getTarifa() {
         return tarifa;
     }
-    public void setTarifa(double tarifa) {
+    public void setTarifa(BigDecimal tarifa) {
         this.tarifa = tarifa;
     }
     public int getArea() {

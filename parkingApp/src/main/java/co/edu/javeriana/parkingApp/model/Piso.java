@@ -1,9 +1,11 @@
 package co.edu.javeriana.parkingApp.model;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.javeriana.parkingApp.model.dto.dtoVehiculo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,25 +57,25 @@ public class Piso {
         this.espaciosDisponibles--;
     }
 
-    public String sacarVehiculo(Vehiculo vehiculo){
+    public dtoVehiculo sacarVehiculo(Vehiculo vehiculo){
         vehiculos.remove(vehiculo);
         this.totalVehiculos--;
         this.espaciosDisponibles++;
         return calcularCobro(vehiculo);
     }
-    public String calcularCobro(Vehiculo vehiculo){
+    public dtoVehiculo calcularCobro(Vehiculo vehiculo){
         int horaLlegada = vehiculo.getHoraLlegada();
         LocalTime horaActual = LocalTime.now();
         int horaActualHH = horaActual.getHour() * 100 + horaActual.getMinute(); // Hora actual en formato militar
 
         // Calcular la diferencia de tiempo
         int minutosDentro = horaActualHH - horaLlegada;
-        double aCobrar= minutosDentro * this.tipoVehiculo.getTarifa();
+        BigDecimal aCobrar= this.tipoVehiculo.getTarifa().multiply(new BigDecimal(minutosDentro));
         // Calcular las horas y minutos
         int horasDentro = minutosDentro / 100;
         int minutosRestantes = minutosDentro % 100;
-
-        return "El vehículo con ID " + vehiculo.getId() + " ha estado dentro por " + horasDentro + " horas y " + minutosRestantes + " minutos." + "\nSe cobra entonces: "+ aCobrar;
+        dtoVehiculo dto= new dtoVehiculo(vehiculo, minutosDentro, aCobrar);
+        return dto;
     }
     public boolean estaVehiculo(Vehiculo vehiculo){
         return vehiculos.contains(vehiculo);

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.javeriana.parkingApp.model.Vehiculo;
+import co.edu.javeriana.parkingApp.model.dto.dtoVehiculo;
 import co.edu.javeriana.parkingApp.service.PisoService;
 import co.edu.javeriana.parkingApp.service.VehiculoService;
 import jakarta.validation.Valid;
@@ -47,23 +48,8 @@ public class PisoControllerRest {
     }   
     @CrossOrigin("http://localhost:4200/")
     @GetMapping("/registrarSalida/{idVehiculo}")
-    public ResponseEntity<String> registrarSalida(@PathVariable("idVehiculo") Long idVehiculo){
-        Vehiculo v = vehiculoService.recuperarVehiculo(idVehiculo);
-        log.info(null, null, idVehiculo, v);
-        List<Piso> pisos = pisoService.listarPisos();
-        int k=0;
-        Piso p= null;
-        while (k<pisos.size()) {
-            p=pisos.get(k);
-            if(p.estaVehiculo(v)){
-                p.sacarVehiculo(v);
-                pisoService.guardarPiso(p);
-                vehiculoService.borrarVehiculo(idVehiculo);
-                return ResponseEntity.ok("Vehiculo debe: "+ p.sacarVehiculo(v));
-            }
-            k++;
-        }  
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No encontrado el vehiculo");    
+    public dtoVehiculo registrarSalida(@PathVariable("idVehiculo") int idVehiculo){
+        return pisoService.registrarSalida(idVehiculo);
     }
     @CrossOrigin("http://localhost:4200/")
     @GetMapping("/pisosPorTipoVehiculo/{tipoVehiculo}")
