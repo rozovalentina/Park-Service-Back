@@ -19,4 +19,6 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo, Long> {
     @Query("SELECT p from Vehiculo p WHERE p.id = :id")
     List<Vehiculo> findVehiculoById(int id);
 
+    void deleteById(int id);
+
 }

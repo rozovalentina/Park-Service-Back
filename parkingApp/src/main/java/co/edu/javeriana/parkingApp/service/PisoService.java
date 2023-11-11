@@ -12,6 +12,7 @@ import co.edu.javeriana.parkingApp.model.Vehiculo;
 import co.edu.javeriana.parkingApp.model.dto.dtoVehiculo;
 import co.edu.javeriana.parkingApp.repository.PisoRepository;
 import co.edu.javeriana.parkingApp.repository.VehiculoRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class PisoService {
@@ -50,10 +51,13 @@ public class PisoService {
     public dtoVehiculo sacarVehiculo(Vehiculo vehiculo){
         return null;
     }
-    
+    @Transactional
     public dtoVehiculo registrarSalida(int idVehiculo){
         Piso p = pisoRepository.findPisoByVehiculoId(idVehiculo).get(0);
         Vehiculo v = (Vehiculo) vehiculoRepository.findAllById(idVehiculo).get(0);
-        return p.sacarVehiculo(v);
-    }
+        dtoVehiculo dto= p.sacarVehiculo(v);
+        vehiculoRepository.deleteById(idVehiculo);
+        pisoRepository.save(p);
+        return dto;
+    }        
 }
