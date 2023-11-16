@@ -52,7 +52,7 @@ public class PisoControllerRest {
         return pisoService.registrarSalida(idVehiculo);
     }
     @CrossOrigin("http://localhost:4200/")
-    @GetMapping("/pisosPorTipoVehiculo/{tipoVehiculo}")
+    @GetMapping("/pisos/{tipoVehiculo}")
     public List<Piso> mostrarPisosPorTipoVehiculo(@PathVariable("tipoVehiculo") char tipoVehiculo){
         List<Piso> pisos= pisoService.listarPisos();
         List<Piso> aRetornar= new ArrayList<>();
@@ -62,6 +62,12 @@ public class PisoControllerRest {
             }
         }
         return aRetornar;
+    }
+
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/pisos")
+    public List<Piso> listarPisos(){
+        return pisoService.listarPisos();
     }
 
 }

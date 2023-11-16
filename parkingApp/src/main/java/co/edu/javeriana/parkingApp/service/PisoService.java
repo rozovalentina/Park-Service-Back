@@ -37,6 +37,10 @@ public class PisoService {
         pisoRepository.save(piso);
     }
 
+    public List<Piso> getPisosTipo(char tipo){
+        return pisoRepository.findPisosBytipo(tipo);
+    }    
+
     public String borrarPiso(Long id){
         Piso p=pisoRepository.findById(id).orElseThrow();
         if(p.getTotalVehiculos()>0){
@@ -53,7 +57,7 @@ public class PisoService {
     }
     @Transactional
     public dtoVehiculo registrarSalida(int idVehiculo){
-        Piso p = pisoRepository.findPisoByVehiculoId(idVehiculo).get(0);
+        Piso p = pisoRepository.findPisosByVehiculoId(idVehiculo).get(0);
         Vehiculo v = (Vehiculo) vehiculoRepository.findAllById(idVehiculo).get(0);
         dtoVehiculo dto= p.sacarVehiculo(v);
         vehiculoRepository.deleteById(idVehiculo);
