@@ -40,4 +40,5 @@ public class VehiculoControllerRest {
     public ResponseEntity<Vehiculo> getVehiculo(@PathVariable("idVehiculo") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(vehiculoService.recuperarVehiculo(id));
     }
+
 }

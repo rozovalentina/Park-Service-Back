@@ -40,9 +40,9 @@ public class DBInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Edificio ed = edificioRepository.save(new Edificio("El propio parqueadero",100, 100));
 
-        TipoVehiculo tv1 = tipoVehiculoRepository.save(new TipoVehiculo('C', new BigDecimal(160), 8));
-        TipoVehiculo tv2 = tipoVehiculoRepository.save(new TipoVehiculo('M', new BigDecimal(60), 2));
-        TipoVehiculo tv3 = tipoVehiculoRepository.save(new TipoVehiculo('B', new BigDecimal(200), 24));
+        TipoVehiculo tv1 = tipoVehiculoRepository.save(new TipoVehiculo('C', new BigDecimal(160), 8,"Fines de semana"));
+        TipoVehiculo tv2 = tipoVehiculoRepository.save(new TipoVehiculo('M', new BigDecimal(60), 2, "Lunes a viernes"));
+        TipoVehiculo tv3 = tipoVehiculoRepository.save(new TipoVehiculo('B', new BigDecimal(20), 24, "Fines de semana"));
 
         Piso p1 = pisoRepository.save(new Piso(ed, tv1));
         Piso p2 = pisoRepository.save(new Piso(ed, tv2));

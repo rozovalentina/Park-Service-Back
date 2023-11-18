@@ -1,16 +1,17 @@
 ### PisoControllerRest.registrarVehiculo
-POST http://localhost:8090/gestionParqueaderos/registrarVehiculo?idPiso=1
+POST http://localhost:8090/gestionParqueaderos/pisos/registrarVehiculo?idPiso=2
 Content-Type: application/json
 
 {
-    "id": 1 
+    "id":10,
+    "placa": "cosa"
 }
 ### crear VEhiculo
 POST http://localhost:8090/gestionParqueaderos/crearVehiculo
 Content-Type: application/json
 
 {
-    "id": 9,
+    "id": 10,
     "placa": "cosa"
 }
 
@@ -19,3 +20,6 @@ GET http://localhost:8090/gestionParqueaderos/pisosPorTipoVehiculo/B
 
 ### obtener cobro
 GET http://localhost:8090/gestionParqueaderos/registrarSalida/1
+
+###obtener lista de pisos
+GET http://localhost:8090/gestionParqueaderos/pisos

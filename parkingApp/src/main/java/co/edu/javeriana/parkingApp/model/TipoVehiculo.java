@@ -23,18 +23,29 @@ public class TipoVehiculo {
     private BigDecimal tarifa;
     @Column(name = "area")
     private int area;
+    @Column(name = "dia")
+    private String dia;
     
     @OneToMany(mappedBy = "tipoVehiculo")
     private List<Piso> pisos;
 
     public TipoVehiculo(){
-
     };
     
-    public TipoVehiculo(char tipo, BigDecimal tarifa, int area) {
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    public TipoVehiculo(char tipo, BigDecimal tarifa, int area, String dia) {
         this.tipo = tipo;
         this.tarifa = tarifa;
         this.area = area;
+        this.dia = dia;
     }
     
     public void setId(Long id) {
@@ -50,7 +61,11 @@ public class TipoVehiculo {
         this.tipo = tipo;
     }
     public BigDecimal getTarifa() {
-        return tarifa;
+        if (dia.equals("Fines de semana")) {
+            return tarifa.add(new BigDecimal(50));
+        }else{
+            return tarifa;
+        }
     }
     public void setTarifa(BigDecimal tarifa) {
         this.tarifa = tarifa;

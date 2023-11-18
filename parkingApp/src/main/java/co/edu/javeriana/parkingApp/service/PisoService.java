@@ -21,8 +21,8 @@ public class PisoService {
     private PisoRepository pisoRepository;
     @Autowired
     private VehiculoRepository vehiculoRepository;
-    public Piso recuperarPiso(Long id) {
-        return pisoRepository.findById(id).orElseThrow();
+    public Piso recuperarPiso(int id) {
+        return pisoRepository.findById(Integer.toUnsignedLong(id)).orElseThrow();
     }
 
     public List<Piso> listarPisos() {
@@ -36,7 +36,9 @@ public class PisoService {
     public void guardarPiso(Piso piso) {
         pisoRepository.save(piso);
     }
-
+    public List<Vehiculo> findVehiculosByPiso(int idPiso){
+        return vehiculoRepository.findVehiculosByPiso(idPiso);
+    }
     public List<Piso> getPisosTipo(char tipo){
         return pisoRepository.findPisosBytipo(tipo);
     }    

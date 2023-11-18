@@ -37,8 +37,8 @@ public class PisoControllerRest {
     private PisoService pisoService;
 
     @CrossOrigin("http://localhost:4200/")
-    @PostMapping("/registrarVehiculo")
-    public Piso registrarVehiculo(@Valid @RequestBody Vehiculo v, @RequestParam Long idPiso){   
+    @PostMapping("/pisos/registrarVehiculo")
+    public Piso registrarVehiculo(@Valid @RequestBody Vehiculo v, @RequestParam int idPiso){   
         Piso p = pisoService.recuperarPiso(idPiso);    
         v.setPiso(p);    
         vehiculoService.guardarVehiculo(v);  
@@ -47,12 +47,12 @@ public class PisoControllerRest {
         return p;
     }   
     @CrossOrigin("http://localhost:4200/")
-    @GetMapping("/registrarSalida/{idVehiculo}")
+    @GetMapping("/pisos/registrarSalida/{idVehiculo}")
     public dtoVehiculo registrarSalida(@PathVariable("idVehiculo") int idVehiculo){
         return pisoService.registrarSalida(idVehiculo);
     }
     @CrossOrigin("http://localhost:4200/")
-    @GetMapping("/pisos/{tipoVehiculo}")
+    @GetMapping("/pisos/tipoVehiculos/{tipoVehiculo}")
     public List<Piso> mostrarPisosPorTipoVehiculo(@PathVariable("tipoVehiculo") char tipoVehiculo){
         List<Piso> pisos= pisoService.listarPisos();
         List<Piso> aRetornar= new ArrayList<>();
@@ -70,4 +70,14 @@ public class PisoControllerRest {
         return pisoService.listarPisos();
     }
 
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/pisos/vehiculos/{idPiso}")
+    public List<Vehiculo> getVehiculosByPiso(@PathVariable("idPiso") int idPiso){
+        return pisoService.findVehiculosByPiso(idPiso);
+    }
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/pisos/{idPiso}")
+    public Piso getPisoByid(@PathVariable("idPiso") int idPiso){
+        return pisoService.recuperarPiso(idPiso);
+    }
 }

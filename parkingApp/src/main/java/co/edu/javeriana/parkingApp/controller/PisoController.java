@@ -35,7 +35,7 @@ public class PisoController {
     Logger log = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/view/{idPiso}")
-    public ModelAndView recuperarPiso(@PathVariable Long idPiso) {
+    public ModelAndView recuperarPiso(@PathVariable int idPiso) {
         Piso piso = pisoService.recuperarPiso(idPiso);
         ModelAndView pisoView = new ModelAndView("piso-view");
         pisoView.addObject("piso", piso);
@@ -51,7 +51,7 @@ public class PisoController {
     }
 
     @GetMapping("/edit/{idPiso}")
-    public ModelAndView editarPiso(@PathVariable Long idPiso) {
+    public ModelAndView editarPiso(@PathVariable int idPiso) {
         Piso piso = pisoService.recuperarPiso(idPiso);
         ModelAndView pisoEditView = new ModelAndView("piso-edit");
         pisoEditView.addObject("piso", piso);
