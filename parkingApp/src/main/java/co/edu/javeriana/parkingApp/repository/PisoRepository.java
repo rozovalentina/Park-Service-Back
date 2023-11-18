@@ -21,7 +21,7 @@ public interface PisoRepository extends JpaRepository<Piso, Long> {
 
     void deleteById(int id);    
     
-    @Query("SELECT p FROM Piso p INNER JOIN  Vehiculo v ON  p.id = v.id WHERE v.id = :idVehiculo")
+    @Query("SELECT p FROM Piso p INNER JOIN  Vehiculo v ON  p.id = v.piso.id WHERE v.id = :idVehiculo")
     List<Piso> findPisosByVehiculoId(@Param("idVehiculo") int idVehiculo);
 
     @Query("SELECT p FROM Piso p WHERE p.tipoVehiculo.tipo = :tipo")

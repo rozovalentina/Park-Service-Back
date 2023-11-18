@@ -23,3 +23,22 @@ GET http://localhost:8090/gestionParqueaderos/registrarSalida/1
 
 ###obtener lista de pisos
 GET http://localhost:8090/gestionParqueaderos/pisos
+
+###agregar persona
+POST http://localhost:8090/usuario/add
+Content-Type: application/json
+
+{
+    "nombre": "NombreUsuario",
+    "contrasenia": "ContraseniaSegura",
+    "correo": "usuario@example.com",
+    "rol": "usuario"
+}
+###Login Usuario
+POST http://localhost:8090/usuario/login
+Content-Type: application/json
+
+{
+    "contrasenia": "ContraseniaSegura",
+    "correo": "usuario@example.com"
+}

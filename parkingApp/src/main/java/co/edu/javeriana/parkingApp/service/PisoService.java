@@ -59,11 +59,18 @@ public class PisoService {
     }
     @Transactional
     public dtoVehiculo registrarSalida(int idVehiculo){
-        Piso p = pisoRepository.findPisosByVehiculoId(idVehiculo).get(0);
-        Vehiculo v = (Vehiculo) vehiculoRepository.findAllById(idVehiculo).get(0);
-        dtoVehiculo dto= p.sacarVehiculo(v);
-        vehiculoRepository.deleteById(idVehiculo);
-        pisoRepository.save(p);
-        return dto;
+        List<Piso> p = pisoRepository.findPisosByVehiculoId(idVehiculo);
+        if( !p.isEmpty()){
+            Piso p2 = p.get(0);
+            Vehiculo v = (Vehiculo) vehiculoRepository.findAllById(idVehiculo).get(0);
+            dtoVehiculo dto= p2.sacarVehiculo(v);
+            vehiculoRepository.deleteById(idVehiculo);
+            pisoRepository.save(p2);
+            return dto;
+        }else{
+            dtoVehiculo d = new dtoVehiculo();
+            return d;
+        }
+        
     }        
 }

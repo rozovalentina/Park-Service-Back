@@ -120,5 +120,4 @@ public ResponseEntity<UserEntity> buscarUser() {
     return new ResponseEntity<>(user, HttpStatus.OK);
 }
 
-    
 }
