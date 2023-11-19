@@ -27,10 +27,6 @@ SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         .headers(headers -> headers.frameOptions(frame -> frame.disable()))
         .authorizeHttpRequests(requests -> requests
             .requestMatchers(new AntPathRequestMatcher("/h2/**")).permitAll()
-            .requestMatchers("/usuario/login").permitAll()
-            .requestMatchers("/usuario/register").permitAll()
-            .requestMatchers("/usuario/details").hasAuthority("ADMIN")
-            .requestMatchers("/usuario/find/correo/**").hasAuthority("ADMIN")
             .anyRequest().permitAll()
         )
         .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint));
