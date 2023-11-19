@@ -17,7 +17,6 @@ import co.edu.javeriana.parkingApp.service.VehiculoService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
 @RequestMapping("/gestionParqueaderos/tipoVehiculo")
 public class TipoVehiculoRest {
     @Autowired
@@ -26,17 +25,17 @@ public class TipoVehiculoRest {
     private PisoService pisoService;
     @Autowired
     private TipoVehiculoService tipoVehiculoService;
-
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/{idTipoVehiculo}")
     public TipoVehiculo recuperarTipoVehiculo(@PathVariable int idTipoVehiculo){
         return this.tipoVehiculoService.recuperarTipoVehiculo(Integer.toUnsignedLong(idTipoVehiculo));
     }
-
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/list")
     public List<TipoVehiculo> listarTipoVehiculos(){
         return tipoVehiculoService.listarTipoVehiculos();
     }
-
+    @CrossOrigin("http://localhost:4200/")
     @PostMapping("/save")
     public TipoVehiculo guardarTipoVehiculo( @RequestBody TipoVehiculo tipoVehiculo){
         System.out.println(tipoVehiculo.toString());
