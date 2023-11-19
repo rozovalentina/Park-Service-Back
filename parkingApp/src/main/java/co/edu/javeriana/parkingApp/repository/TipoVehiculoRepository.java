@@ -21,5 +21,5 @@ public interface TipoVehiculoRepository extends JpaRepository<TipoVehiculo, Long
     // https://www.baeldung.com/spring-data-derived-queries
 
     @Query("SELECT tv FROM TipoVehiculo tv WHERE tv.tipo = :tipo")
-    TipoVehiculo findByTipo(char tipo);
+    TipoVehiculo findByTipo(String tipo);
 }

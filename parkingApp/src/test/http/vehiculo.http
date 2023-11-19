@@ -42,3 +42,14 @@ Content-Type: application/json
     "contrasenia": "ContraseniaSegura",
     "correo": "usuario@example.com"
 }
+
+###agregar nuevo tipo Vehiculo
+POST http://localhost:8090/gestionParqueaderos/tipoVehiculo/save
+Content-Type: application/json
+
+{
+    "tipo": "A",
+    "tarifa": 25,
+    "area": 100,
+    "dia": "Lunes"
+}

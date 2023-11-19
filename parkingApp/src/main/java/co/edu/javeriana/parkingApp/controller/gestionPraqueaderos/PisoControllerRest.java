@@ -53,7 +53,7 @@ public class PisoControllerRest {
     }
     @CrossOrigin("http://localhost:4200/")
     @GetMapping("/pisos/tipoVehiculos/{tipoVehiculo}")
-    public List<Piso> mostrarPisosPorTipoVehiculo(@PathVariable("tipoVehiculo") char tipoVehiculo){
+    public List<Piso> mostrarPisosPorTipoVehiculo(@PathVariable("tipoVehiculo") String tipoVehiculo){
         List<Piso> pisos= pisoService.listarPisos();
         List<Piso> aRetornar= new ArrayList<>();
         for (Piso piso : pisos) {
