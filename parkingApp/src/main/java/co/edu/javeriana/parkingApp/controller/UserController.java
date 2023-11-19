@@ -84,9 +84,6 @@ public class UserController {
         ResponseEntity<List<UserEntity>> response = new ResponseEntity<>(usuarios, HttpStatus.OK);
         return response;
     }
-
-
-
     
     @PutMapping("/modificar")
     public ResponseEntity<UserEntity> modificar (@RequestBody UserEntity user)
