@@ -69,7 +69,8 @@ public class Piso {
         int horaActualHH = horaActual.getHour() * 100 + horaActual.getMinute(); // Hora actual en formato militar
 
         // Calcular la diferencia de tiempo
-        int minutosDentro = horaActualHH - horaLlegada;
+        int minutosDentro = Math.abs(horaActualHH - horaLlegada);
+        
         BigDecimal aCobrar= this.tipoVehiculo.getTarifa().multiply(new BigDecimal(minutosDentro));
         // Calcular las horas y minutos
         int horasDentro = minutosDentro / 100;

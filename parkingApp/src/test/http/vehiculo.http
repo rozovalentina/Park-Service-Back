@@ -1,5 +1,5 @@
 ### PisoControllerRest.registrarVehiculo
-POST http://localhost:8090/gestionParqueaderos/pisos/registrarVehiculo?idPiso=2
+POST http://localhost:8090/gestionParqueaderos/pisos/registrarVehiculo?idPiso=1
 Content-Type: application/json
 
 {
